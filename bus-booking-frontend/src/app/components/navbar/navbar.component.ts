@@ -52,7 +52,7 @@ import { AuthService } from '../../services/auth.service';
                   routerLink="/login" routerLinkActive="active-link">Login</a>
               </li>
               <li class="nav-item">
-                <a class="btn btn-danger btn-sm rounded-pill px-3" routerLink="/register">Register</a>
+                <a class="btn btn-warning btn-sm rounded-pill px-3" routerLink="/register">Register</a>
               </li>
             </ng-container>
           </ul>
