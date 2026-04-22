@@ -53,6 +53,10 @@ public class ScheduleService {
     }
 
     private ScheduleResponse toResponse(RouteSchedule rs) {
+        if (rs == null || rs.getBusRoute() == null) {
+            throw new RuntimeException("Invalid schedule data: schedule or bus route is null");
+        }
+        
         ScheduleResponse r = new ScheduleResponse();
         r.setId(rs.getId());
         r.setRouteId(rs.getBusRoute().getId());
