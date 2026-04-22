@@ -1,0 +1,80 @@
+############################
+# Java / Spring Boot
+############################
+target/
+*.log
+*.class
+*.jar
+*.war
+*.ear
+
+# Maven
+.mvn/
+mvnw
+mvnw.cmd
+
+# Gradle
+.gradle/
+build/
+
+############################
+# Node / Angular
+############################
+node_modules/
+dist/
+.tmp/
+.angular/
+.angular/cache/
+out-tsc/
+coverage/
+
+############################
+# Environment files
+############################
+.env
+.env.local
+.env.*.local
+
+############################
+# IDEs
+############################
+
+# Eclipse
+.project
+.classpath
+.settings/
+
+# IntelliJ
+.idea/
+*.iml
+
+# VS Code
+.vscode/
+
+############################
+# OS files
+############################
+.DS_Store
+Thumbs.db
+
+############################
+# Logs
+############################
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+############################
+# Database
+############################
+*.sqlite
+*.db
+
+############################
+# Misc
+############################
+*.tmp
+*.swp
+*.bak

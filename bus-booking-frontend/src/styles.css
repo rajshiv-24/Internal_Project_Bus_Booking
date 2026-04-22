@@ -1,0 +1,13 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f0f4f8;
+  margin: 0;
+}
+
+.rounded-4 { border-radius: 1rem !important; }
+.rounded-top-4 { border-top-left-radius: 1rem !important; border-top-right-radius: 1rem !important; }
