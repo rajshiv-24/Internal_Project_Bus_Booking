@@ -96,7 +96,9 @@ public class BookingService {
 
     public ApiResponse getBookedSeats(Long scheduleId) {
         List<Passenger> passengers = passengerRepository.findAll().stream()
-                .filter(p -> p.getBusBooking().getRouteSchedule().getId().equals(scheduleId))
+                .filter(p -> p.getBusBooking() != null && 
+                           p.getBusBooking().getRouteSchedule() != null && 
+                           p.getBusBooking().getRouteSchedule().getId().equals(scheduleId))
                 .collect(Collectors.toList());
 
         List<String> bookedSeats = passengers.stream()
@@ -108,17 +110,26 @@ public class BookingService {
     }
 
     private BookingResponse toBookingResponse(BusBooking b, List<Passenger> passengers) {
+        if (b == null || b.getRouteSchedule() == null || b.getCustomer() == null) {
+            throw new RuntimeException("Invalid booking data: booking, route schedule, or customer is null");
+        }
+        
         List<PassengerResponse> passengerResponses = passengers.stream()
                 .map(p -> new PassengerResponse(
                         p.getId(), p.getPassengerName(), p.getPassengerAge(),
                         p.getSeatNo(), b.getId()))
                 .collect(Collectors.toList());
 
+        BusRoute route = b.getRouteSchedule().getBusRoute();
+        if (route == null) {
+            throw new RuntimeException("Route information missing for schedule");
+        }
+        
         return new BookingResponse(
                 b.getId(),
                 b.getRouteSchedule().getId(),
-                b.getRouteSchedule().getBusRoute().getSrc(),
-                b.getRouteSchedule().getBusRoute().getDest(),
+                route.getSrc(),
+                route.getDest(),
                 b.getRouteSchedule().getScheduleDt(),
                 b.getRouteSchedule().getDepartureTime(),
                 b.getCustomer().getCustId(),
